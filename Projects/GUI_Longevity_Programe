@@ -1,0 +1,26 @@
+from tkinter import *
+
+class Application(Frame):
+    """GUI application which can reveal the secret of longevity"""
+    def __init__(self, master):
+        """Initalize the frame"""
+        super(Application, self).__init__(master)
+        self.grid()
+        self.create_widgets()
+
+    def create_widgets(self):
+        """Create button, text, and entry widgets. """
+        self.inst_lbl = Lable(self, test = "Enter password for the secret of longevity")
+        self.inst_lbl.grid(row = 0, column = 0, columnspan = 2, sticky = W)
+
+        #Lable for password
+        self.pw_lbl = Lable(self, test = "Password: ")
+        self.pw_lbl = grid(row = 1, column = 0, sticky = W)
+
+        #Create entry widget to accept password
+        self.pw_ent = Entry(self)
+        self.pw_ent.grid(row = 1, column = 1, sticky = W)
+
+        #Create submit button
+        self.submit_bttn = Button(self, test = "Submit", command = self.reveal)
+        self.submit_bttn.grid(row = 2, column = 0, sticky = W)
