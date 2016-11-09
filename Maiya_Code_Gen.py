@@ -111,7 +111,7 @@ class Ui_SlideCypher(object):
         SlideCypher.setWindowTitle(_translate("SlideCypher", "Slide Cypher", None))
         self.Encrypt.setText(_translate("SlideCypher", "Encrypt", None))
         self.Title.setText(_translate("SlideCypher", "Slide Cypher", None))
-        self.Encryption_Box_Label.setText(_translate("SlideCypher", "Enter sentance top be encrypted. ", None))
+        self.Encryption_Box_Label.setText(_translate("SlideCypher", "Enter sentance to be encrypted. ", None))
         self.key_lable.setText(_translate("SlideCypher", "Choose encryption key (1 to 26): ", None))
 
     def encryption(self, text):
