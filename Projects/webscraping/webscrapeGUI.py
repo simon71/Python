@@ -14,17 +14,22 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Scrape_gui(object):
-    def setupUi(self, Scrape):
-        Scrape.setObjectName(_fromUtf8("Scrape"))
-        Scrape.resize(650, 600)
-        Scrape.setMaximumSize(650, 600)
-        font = QtGui.QFont()
-        font.setFamily(_fromUtf8("Calibri"))
-        Scrape.setFont(font)
+class Window(QtGui.QMainWindow):
+    def __init__(self):
+        super(Window, self).__init__()
+        self.setGeometry(100,100, 650, 650)
+
+    def setupUi(self):
+        # Scrape.setObjectName(_fromUtf8("Scrape"))
+        # Scrape.resize(650, 600)
+        # Scrape.setMaximumSize(650, 600)
+        # font = QtGui.QFont()
+        # font.setFamily(_fromUtf8("Calibri"))
+        # Scrape.setFont(font)
 
         self.centralwidget = QtGui.QWidget(Scrape)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
+
 
         #Title
         self.Title = QtGui.QLabel(self.centralwidget)
@@ -69,10 +74,11 @@ class Scrape_gui(object):
 
 
 if __name__ == "__main__":
+
     import sys
     app = QtGui.QApplication(sys.argv)
     Scrape = QtGui.QMainWindow()
-    ui = Scrape_gui()
+    ui = Window()
     ui.setupUi(Scrape)
     Scrape.show()
     sys.exit(app.exec_())
