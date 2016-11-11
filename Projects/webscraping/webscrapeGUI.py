@@ -1,4 +1,5 @@
 from PyQt4 import QtCore, QtGui
+import sys
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -18,67 +19,64 @@ class Window(QtGui.QMainWindow):
     def __init__(self):
         super(Window, self).__init__()
         self.setGeometry(100,100, 650, 650)
+        self.setObjectName(_fromUtf8("centralwidget"))
+        self.setWindowTitle("Automated webscraping app")
 
-    def setupUi(self):
-        # Scrape.setObjectName(_fromUtf8("Scrape"))
-        # Scrape.resize(650, 600)
-        # Scrape.setMaximumSize(650, 600)
-        # font = QtGui.QFont()
-        # font.setFamily(_fromUtf8("Calibri"))
-        # Scrape.setFont(font)
-
-        self.centralwidget = QtGui.QWidget(Scrape)
-        self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-
-
-        #Title
-        self.Title = QtGui.QLabel(self.centralwidget)
-        self.Title.setGeometry(QtCore.QRect(50, 20, 500, 50))
+        #page Title
+        self.Title = QtGui.QLabel(self)
+        self.Title.setGeometry(QtCore.QRect(5, 0, 500, 50))
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Calibri"))
         font.setPointSize(16)
         font.setBold(True)
-        font.setWeight(75)
+        font.setWeight(50)
         self.Title.setFont(font)
         self.Title.setAutoFillBackground(True)
-        self.Title.setObjectName(_fromUtf8("Title"))
+        self.Title.setObjectName(_fromUtf8("Pagetitle"))
 
-        #search word input box Title
-        self.Search_label = QtGui.QLabel(self.centralwidget)
-        self.Search_label.setGeometry(QtCore.QRect(50,130,251,16))
+        #search Title
+        self.searchTitle = QtGui.QLabel(self)
+        self.searchTitle.setGeometry(QtCore.QRect(5,50,1200,50))
         font = QtGui.QFont()
-        font.setPointSize(10)
-        self.Search_label.setFont(font)
-        self.Search_label.setObjectName(_fromUtf8("Search_label"))
+        font.setFamily(_fromUtf8("Calibri"))
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(50)
+        self.searchTitle.setFont(font)
+        self.searchTitle.setAutoFillBackground(True)
+        self.searchTitle.setObjectName(_fromUtf8("Searchtitle"))
 
-        #search word input box
-        self.Search = QtGui.QTextEdit(self.centralwidget)
-        self.Search.setGeometry(QtCore.QRect(50, 160, 501, 141))
-        self.Search.setObjectName(_fromUtf8("Search"))
+
+
+        self.main()
+
+    def main(self):
+        #page Title
+        self.Title.setText(_translate("Window", "Webscraper", None))
+        self.searchTitle.setText(_translate("Window", "Enter search word here:", None))
+
+        #search word Title
+
+        #search word Input
+        self.Encrption_In = QtGui.QTextEdit(self)
+        self.Encrption_In.setGeometry(QtCore.QRect(5, 90, 150, 30))
+        self.Encrption_In.setObjectName(_fromUtf8("Encrption_In"))
 
         #submit button
-        self.Submit = QtGui.QPushButton(self.centralwidget)
-        self.Submit.setGeometry(QtCore.QRect(50, 320, 93, 28))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.Submit.setFont(font)
-        self.Submit.setObjectName(_fromUtf8("Submit"))
+        submit_btn = QtGui.QPushButton("submit", self)
+        submit_btn.clicked.connect(self.scrapedata)
+        submit_btn.move(5,130)
+        submit_btn.resize(submit_btn.sizeHint())
 
-        self.scrapingUI(Scrape)
-        QtCore.QMetaObject.connectSlotsByName(Scrape)
+        self.show()
 
-    def scrapingUI(self, Scrape):
-        Scrape.setWindowTitle(_translate("Scrape", "Paula's app", None))
-        self.Title.setText(_translate("Scrape", "Paula's app", None))
-        self.Search_label.setText(_translate("Scrape", "Search Word", None))
+    def scrapedata(self):
+        print("it worked")
+        sys.exit()
 
-
-if __name__ == "__main__":
-
-    import sys
+def run():
     app = QtGui.QApplication(sys.argv)
-    Scrape = QtGui.QMainWindow()
     ui = Window()
-    ui.setupUi(Scrape)
-    Scrape.show()
     sys.exit(app.exec_())
+
+run()

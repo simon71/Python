@@ -30,7 +30,7 @@ class Window(QtGui.QMainWindow):
         #self.setWindowIcon(QtGui.QIcon('file name'))
 
         #main menu
-        extractAction = QtGui.QAction()
+        #extractAction = QtGui.QAction()
 
         self.home()
 
@@ -42,8 +42,24 @@ class Window(QtGui.QMainWindow):
             #btn.sizeHint will return best sizeHint
             #btn.minimumSizeHint will return min size
         btn.move(100,100)#change location of button
+        #progress bar
+        self.progress = QtGui.QProgressBar(self)
+        self.progress.setGeometry(200,80,250,20)
+
+        self.btn = QtGui.QPushButton("Download", self)
+        self.btn.move(200,120)
+        self.btn.clicked.connect(self.download)
+
+
+
 
         self.show()
+    def download(self):
+        self.completed = 0
+
+        while self.completed < 100:
+            self.completed += 0.0001
+            self.progress.setValue(self.completed)
 
     def close_application(self):
         print("something")
