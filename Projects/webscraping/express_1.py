@@ -53,7 +53,9 @@ fd = datetime.datetime.now()
 fd_str = str(fd.strftime('%d-%m-%Y'))
 
 #write date to csv
-with open('express_'+fd_str+'.csv', 'w', newline='') as exp:
+filename = 'express'+fd_str+'.csv'
+
+with open(filename, 'w', newline='') as exp:
  a = csv.writer(exp, delimiter=',')
  a.writerows(data)
 exp.close()
